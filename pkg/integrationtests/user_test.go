@@ -1,5 +1,9 @@
 //go:build integration
 
+// To run integration tests, use:
+// go test ./... -tags=integration
+// Alternatively, a file can be marked as a unit test with: //go:build unit
+// However, -tags=unit must be passed to the go test command.
 package integrationtests
 
 import (
