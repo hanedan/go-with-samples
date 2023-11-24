@@ -15,7 +15,7 @@ func init() {
 	v = *validator.New()
 
 	// Register custom validators sample
-	v.RegisterValidation("nodots", func(fl validator.FieldLevel) bool {
+	err := v.RegisterValidation("nodots", func(fl validator.FieldLevel) bool {
 		t, ok := fl.Field().Interface().(string)
 		if !ok {
 			return false
@@ -25,6 +25,9 @@ func init() {
 		}
 		return true
 	})
+	if err != nil {
+		panic(err)
+	}
 }
 
 func ValidateNoDots(s string) error {

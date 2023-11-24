@@ -48,7 +48,7 @@ func TestCreateHandlerError(t *testing.T) {
 		},
 		"ReqID is valid, but User data is not. Dateformat doesn't match, must return BadRequest": {
 			request: CreateUserReq{
-				ReqID: "120",
+				ReqID: "550e8400-e29b-41d4-a716-4466554400005",
 				User: u.User{
 					Name:     "Name",
 					LastName: "LastName",
@@ -61,13 +61,13 @@ func TestCreateHandlerError(t *testing.T) {
 		},
 		"ReqID is valid, but User data is not. Name contains dots, must return BadRequest": {
 			request: CreateUserReq{
-				ReqID: "120",
+				ReqID: "550e8400-e29b-41d4-a716-446655440000",
 				User: u.User{
 					Name:     "Name.Name",
 					LastName: "LastName",
 					Email:    "valid@email.com",
 					Mobile:   "+905001001010",
-					Birthday: "01-01-2001",
+					Birthday: "2001-01-01",
 				},
 			},
 			expectedMsg: ErrValidationFailed,
