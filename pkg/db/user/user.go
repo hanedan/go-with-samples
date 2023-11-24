@@ -12,7 +12,7 @@ func NewUserDB(db *sql.DB) *UserDB {
 
 type User struct {
 	UserID   int    `json:"id"`
-	Name     string `json:"name" validate:"required,min=2,max=255"`
+	Name     string `json:"name" validate:"required,min=2,max=255,nodots"`
 	LastName string `json:"last_name" validate:"required,min=2,max=255"`
 	Email    string `json:"email" validate:"required,email,max=255"`
 	Mobile   string `json:"mobile" validate:"required,e164"`

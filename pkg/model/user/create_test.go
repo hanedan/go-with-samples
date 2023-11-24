@@ -59,6 +59,19 @@ func TestCreateHandlerError(t *testing.T) {
 			},
 			expectedMsg: ErrValidationFailed,
 		},
+		"ReqID is valid, but User data is not. Name contains dots, must return BadRequest": {
+			request: CreateUserReq{
+				ReqID: "120",
+				User: u.User{
+					Name:     "Name.Name",
+					LastName: "LastName",
+					Email:    "valid@email.com",
+					Mobile:   "+905001001010",
+					Birthday: "01-01-2001",
+				},
+			},
+			expectedMsg: ErrValidationFailed,
+		},
 		"The request type is not kind of CreateUserRequest, therefore must return BadRequest": {
 			request:     "an invalid request",
 			expectedMsg: ErrRequestBodyParseFailed,
