@@ -33,7 +33,11 @@ func main() {
 	userApi := mu.NewUserAPI(userDB)
 
 	router := gin.Default()
+	// If you manage a single service under one domain,
+	// the endpoint would be: your-service.com/v1/library-api/
 	v1 := router.Group("/v1")
+	// If you manage multiple services under one domain,
+	// the endpoint would be: your-domain.com/library-api/v1/
 
 	api := v1.Group("/library-api")
 	books := api.Group("/users")
